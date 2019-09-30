@@ -5,3 +5,9 @@ main: not.domain.Home
 commands:
     essentialshsb:
       description: ver sobre o plugin
+    tpa:
+      description: dar tpa em um jogador
+    tpaccept:
+      description: aceitar tpa
+    tpadeny:
+      description: cancelar tpa
