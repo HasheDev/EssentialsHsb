@@ -13,6 +13,7 @@ public class Home extends JavaPlugin{
     String plname = ChatColor.BLUE + "[" + "Essentials" + ChatColor.DARK_GREEN + " Hsb " + ChatColor.BLUE + "]"; //name this plugin
     String plversion = ChatColor.DARK_GREEN + "1"+ChatColor.BLUE+"."+ChatColor.DARK_GREEN+"0";
     String pldev = "Hashing";
+    String permission;
 	public ConsoleCommandSender warn = Bukkit.getConsoleSender(); //warns
 	HashMap<Player, Player> playertpa = new HashMap<Player, Player>(); //HashMap
 	
@@ -34,11 +35,24 @@ public class Home extends JavaPlugin{
 				p.sendMessage(plname);
 				p.sendMessage(plversion);
 				p.sendMessage(ChatColor.BLUE+ " [Download] > " + ChatColor.DARK_GREEN + "https://github.com/HasheDev/EssentialsHsb/releases/tag/1.0");
+			}else if(command.getName().equalsIgnoreCase("essentialshsbhelp")) {
+				permission = "essentialshsb.help";
+				if(p.hasPermission(permission)){
+					ChatColor cmdcolor = ChatColor.GREEN;
+					p.sendMessage(ChatColor.DARK_RED+"/gm: "+cmdcolor+"mudar o modo de jogo");
+					p.sendMessage(ChatColor.DARK_RED+"/fly: "+cmdcolor+"mudar modo de voar");
+					p.sendMessage(ChatColor.DARK_RED+"/tpa: "+cmdcolor+"fazer pedido de teleporte");
+				}else {
+					p.sendMessage("Você não tem a permissão: "+permission + " para usar este comando");
+				}
 			}
 		 else if(command.getName().equalsIgnoreCase("gm") | command.getName().equalsIgnoreCase("gamemode")) {
+			 permission = "essentialshsb.gm";
+			 if(p.hasPermission(permission)) {
 				if(args.length == 1) {
 					  try {
 						  int Gm = Integer.parseInt(args[0]);
+						  p.sendMessage("Use: /gm 1a2 ou /gamemode 1a2");
 						  if(Gm >= 0) {
 								if(Gm == 0) {
 									if(p.getGameMode() != GameMode.SURVIVAL) {
@@ -66,6 +80,22 @@ public class Home extends JavaPlugin{
 					  }catch (NumberFormatException ex) {
 						  p.sendMessage("/gm "+args[0]+" Não é um modo de jogo");
 					  }
+				}
+			 }else {
+				 p.sendMessage("Você não tem a permissão: "+ permission + " para usar este comando");
+			 }
+			}else if(command.getName().equalsIgnoreCase("fly")) {
+				permission = "essentialshsb.fly";
+				if(p.hasPermission(permission)) {
+					if(p.getAllowFlight()) {
+						p.setAllowFlight(false);
+						p.sendMessage("Sua habilidade de voar foi desativada");
+					}else {
+						p.setAllowFlight(true);
+						p.sendMessage("Sua habilidade de voar foi ativada");
+					}
+				}else {
+					p.sendMessage("Você não tem a permissão: "+ permission + " para poder voar");
 				}
 			}
 		 else if(command.getName().equalsIgnoreCase("tpa")) {
