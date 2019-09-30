@@ -35,7 +35,7 @@ public class Home extends JavaPlugin{
 				p.sendMessage(plversion);
 				p.sendMessage(ChatColor.BLUE+ " [Download] > " + ChatColor.DARK_GREEN + "https://github.com/HasheDev/EssentialsHsb/releases/tag/1.0");
 			}
-		 else if(command.getName().equalsIgnoreCase("gm")) {
+		 else if(command.getName().equalsIgnoreCase("gm") | command.getName().equalsIgnoreCase("gamemode")) {
 				if(args.length == 1) {
 					  try {
 						  int Gm = Integer.parseInt(args[0]);
