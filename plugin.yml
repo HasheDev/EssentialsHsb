@@ -1,0 +1,7 @@
+name: EssentialsHsb
+version: 1.0
+author: Hashing
+main: not.domain.Home
+commands:
+    essentialshsb:
+      description: ver sobre o plugin
