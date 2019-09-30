@@ -5,6 +5,8 @@ main: not.domain.Home
 commands:
     essentialshsb:
       description: ver sobre o plugin
+    gm:
+      description: mudar o modo de jogo
     tpa:
       description: dar tpa em um jogador
     tpaccept:

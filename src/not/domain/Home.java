@@ -2,6 +2,7 @@ package not.domain;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -33,6 +34,39 @@ public class Home extends JavaPlugin{
 				p.sendMessage(plname);
 				p.sendMessage(plversion);
 				p.sendMessage(ChatColor.BLUE+ " [Download] > " + ChatColor.DARK_GREEN + "https://github.com/HasheDev/EssentialsHsb/releases/tag/1.0");
+			}
+		 else if(command.getName().equalsIgnoreCase("gm")) {
+				if(args.length == 1) {
+					  try {
+						  int Gm = Integer.parseInt(args[0]);
+						  if(Gm >= 0) {
+								if(Gm == 0) {
+									if(p.getGameMode() != GameMode.SURVIVAL) {
+									p.sendMessage("Você trocou de modo de jogo de " + p.getGameMode() + " para Survival");
+									p.setGameMode(GameMode.SURVIVAL);
+									}
+									else
+									p.sendMessage("Você já esta no modo de jogo Survival");
+								}else if(Gm == 1) {
+									if(p.getGameMode() != GameMode.CREATIVE) {
+									p.sendMessage("Você trocou de modo de jogo de " + p.getGameMode() + " para Criativo");
+									p.setGameMode(GameMode.CREATIVE);
+									}
+									else
+									p.sendMessage("Você já esta no modo de jogo Criativo");
+								}else if(Gm == 2 | Gm == 3) {
+									if(p.getGameMode() != GameMode.SPECTATOR) {
+									p.sendMessage("Você trocou de modo de jogo de " + p.getGameMode() + " para Espectador");
+									p.setGameMode(GameMode.SPECTATOR);
+									}
+									else
+									p.sendMessage("Você já esta no modo de jogo Espectador");
+								}
+						}
+					  }catch (NumberFormatException ex) {
+						  p.sendMessage("/gm "+args[0]+" Não é um modo de jogo");
+					  }
+				}
 			}
 		 else if(command.getName().equalsIgnoreCase("tpa")) {
 			if(args.length == 1) {
