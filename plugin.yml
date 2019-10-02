@@ -7,6 +7,8 @@ commands:
       description: ver sobre o plugin
     essentialshsbhelp:
       description: ver os comandos
+    kick:
+      description: kickar jogadores
     gm:
       description: mudar o modo de jogo
     gamemode:
