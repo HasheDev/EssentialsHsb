@@ -7,6 +7,8 @@ commands:
       description: ver sobre o plugin
     essentialshsbhelp:
       description: ver os comandos
+    godmode:
+      description: ativar modo de resistencia
     kick:
       description: kickar jogadores
     gm:

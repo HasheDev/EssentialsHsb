@@ -9,6 +9,9 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.command.defaults.KickCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+
 import java.util.HashMap;
 public class Home extends JavaPlugin{
     String plname = ChatColor.BLUE + "[" + "Essentials" + ChatColor.DARK_GREEN + " Hsb " + ChatColor.BLUE + "]"; //name this plugin
@@ -28,6 +31,11 @@ public class Home extends JavaPlugin{
 	public void onDisable() {
 		warn.sendMessage(plname);
 		warn.sendMessage(ChatColor.BLUE+"* "+ ChatColor.RED + "desligado com sucesso");
+	}
+	public int modgod(Player p,int modgod) {
+		 p.addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST, Integer.MAX_VALUE, modgod));
+		 p.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, Integer.MAX_VALUE, modgod));
+		return modgod;
 	}
 	@Override
 	@SuppressWarnings("deprecation")
@@ -51,7 +59,15 @@ public class Home extends JavaPlugin{
 				}else {
 					p.sendMessage("Você não tem a permissão: "+permission + " para usar este comando");
 				}
-			}else if(command.getName().equalsIgnoreCase("kick")) {
+			}else if(command.getName().equalsIgnoreCase("godmode")) {
+				permission = "essentialshsb.godmode";
+				if(p.hasPermission(permission)) {
+						modgod(p, 6);
+				}else {
+					p.sendMessage("Você não tem a permissão: "+ permission + " para poder voar");
+				}
+			}
+				else if(command.getName().equalsIgnoreCase("kick")) {
 				if(args.length == 0) {
 					p.sendMessage("Use: /kick player");
 				}else if(args.length > 0) {
